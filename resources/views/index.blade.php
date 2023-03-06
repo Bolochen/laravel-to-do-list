@@ -12,29 +12,52 @@
                 <h2>Good Evening</h2>
                 </div>
             </div>
-            <div class="col-sm-8 border p-3 mx-auto">
+            <div class="col-sm-8 p-5 mx-auto">
                 <div class="row">
                     <form>
-                        <div class="mb-3">
-                          <label for="exampleInputEmail1" class="form-label">Email address</label>
-                          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                        <div class="row mb-3">
+                          <div class="col">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="name" name="name">
+                          </div>
+                          <div class="col">
+                            <label for="status" class="form-label">Urgent</label>
+                              <select class="form-select" name="status">
+                                  <option value="1" selected >Urgent</option>    
+                                  <option value="0">Not urgent</option>  
+                              </select>
+                          </div>
+                          <div class="col mt-1">
+                            <button type="submit" class="d-block mt-4 py-2 btn btn-primary">Submit</button>
+                          </div>
                         </div>
-                        <div class="mb-3">
-                          <label for="exampleInputPassword1" class="form-label">Password</label>
-                          <input type="password" class="form-control" id="exampleInputPassword1">
-                        </div>
-                        <div class="mb-3 form-check">
-                          <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                          <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
                       </form>
                 </div>
-                <div class="row">
+                <div class="row mt-5">
                 <h2>Your undone tasks</h2>
-                <h3>Tidur</h3>
-                <h3>Mandi</h3>
+                <div class="p-1">
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr class="table-dark">
+                        <th scope="col">#</th>
+                        <th scope="col">Task Name</th>
+                        <th scope="col">Option</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="table-warning">
+                        <th scope="row">1</th>
+                        <td>Mandi</td>
+                        <td><a href="" class="badge text-bg-secondary"><i class="bi bi-trash"></i></a></td>
+                      </tr>
+                      <tr class="table-danger">
+                        <th scope="row">2</th>
+                        <td>Tidur</td>
+                        <td><a href="" class="badge text-bg-secondary"><i class="bi bi-trash"></i></a></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
                 </div>
             </div>
         </div>
