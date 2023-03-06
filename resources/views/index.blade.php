@@ -14,21 +14,23 @@
             </div>
             <div class="col-sm-8 p-5 mx-auto">
                 <div class="row">
-                    <form>
+                    <form method="post" action="/">
+                      @csrf
                         <div class="row mb-3">
                           <div class="col">
                             <label for="name" class="form-label">Name</label>
                             <input type="text" class="form-control" id="name" name="name">
+                            <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-title"></div>
                           </div>
                           <div class="col">
-                            <label for="status" class="form-label">Urgent</label>
-                              <select class="form-select" name="status">
+                            <label for="urgent" class="form-label">Urgent</label>
+                              <select class="form-select" id="urgent" name="urgent">
                                   <option value="1" selected >Urgent</option>    
                                   <option value="0">Not urgent</option>  
                               </select>
                           </div>
                           <div class="col mt-1">
-                            <button type="submit" class="d-block mt-4 py-2 btn btn-primary">Submit</button>
+                            <button type="submit" class="d-block mt-4 py-2 btn btn-primary" id="store">Submit</button>
                           </div>
                         </div>
                       </form>
@@ -44,24 +46,37 @@
                         <th scope="col">Option</th>
                       </tr>
                     </thead>
-                    <tbody>
-                      <tr class="table-warning">
-                        <th scope="row">1</th>
-                        <td>Mandi</td>
-                        <td><a href="" class="badge text-bg-secondary"><i class="bi bi-trash"></i></a></td>
-                      </tr>
-                      <tr class="table-danger">
-                        <th scope="row">2</th>
-                        <td>Tidur</td>
-                        <td><a href="" class="badge text-bg-secondary"><i class="bi bi-trash"></i></a></td>
-                      </tr>
+                    <tbody id="table-tasks">
+                      @foreach ($tasks as $task)
+                        @if ($task->urgent == 1)
+                          <tr class="table-danger">
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $task->name }}</td>
+                            <form action="{{ $task->id }}" method="post" class="d-inline">
+                              @method('delete')
+                              @csrf
+                              <td><button class="badge text-bg-secondary  border-0"><i class="bi bi-trash"></i></button></td>
+                            </form>
+                          </tr> 
+                        @else
+                          <tr class="table-warning">
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $task->name }}</td>
+                            <td>
+                            <form action="/{{ $task->id }}" method="post" class="d-inline">
+                              @method('delete')
+                              @csrf
+                              <button class="badge text-bg-secondary border-0"><i class="bi bi-trash"></i></button></td>
+                            </form>
+                            </td>
+                          </tr>
+                        @endif
+                      @endforeach
                     </tbody>
                   </table>
                 </div>
                 </div>
             </div>
         </div>
-</div>
-  
-    
+</div> 
 @endsection
