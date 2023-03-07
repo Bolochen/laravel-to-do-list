@@ -17,7 +17,7 @@ class TaskController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'name' => 'required|max:255',
+            'name' => 'required',
             'urgent' => 'required'
         ]);
 
@@ -26,11 +26,12 @@ class TaskController extends Controller
         return redirect('/');
     }
 
-    public function destroy(Task $task)
+    public function destroy($id)
     {
-
-        Task::destroy($task->id);
+        Task::where('id', $id)->delete();
 
         return redirect('/');
     }
+
+
 }

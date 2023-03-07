@@ -18,4 +18,6 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::resource('/', TaskController::class);
+Route::get('/', [TaskController::class, 'index']);
+Route::post('/', [TaskController::class, 'store']);
+Route::delete('/task/destroy/{id}', [TaskController::class, 'destroy']);

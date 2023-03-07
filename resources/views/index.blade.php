@@ -9,7 +9,7 @@
                 <img src="img/night.png" class="rounded mx-auto d-block p-3 img-fluid" class="max-height: 100px;" alt="...">
                 </div>
                 <div class="row">
-                <h2>Good Evening</h2>
+                <h2>Welcome</h2>
                 </div>
             </div>
             <div class="col-sm-8 p-5 mx-auto">
@@ -52,7 +52,7 @@
                           <tr class="table-danger">
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $task->name }}</td>
-                            <form action="{{ $task->id }}" method="post" class="d-inline">
+                            <form action="/task/destroy/{{ $task->id }}" method="post" class="d-inline">
                               @method('delete')
                               @csrf
                               <td><button class="badge text-bg-secondary  border-0"><i class="bi bi-trash"></i></button></td>
@@ -63,7 +63,7 @@
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $task->name }}</td>
                             <td>
-                            <form action="/{{ $task->id }}" method="post" class="d-inline">
+                            <form action="/task/destroy/{{ $task->id }}" method="post" class="d-inline">
                               @method('delete')
                               @csrf
                               <button class="badge text-bg-secondary border-0"><i class="bi bi-trash"></i></button></td>
